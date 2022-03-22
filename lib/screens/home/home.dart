@@ -31,32 +31,17 @@ class Home extends StatelessWidget {
           ],
         ),
         const SizedBox(
+          height: 20,
+        ),
+        Text('Nearby Resto',
+            style: Theme.of(context).textTheme.headline6),
+        const SizedBox(
           height: 10,
         ),
-        const Text('Nearby Resto',
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold)),
-        SizedBox(
-          height: 10,
-        ),
-        RestaurantCard(),
-        SizedBox(
-          height: 20,
-        ),
-        RestaurantCard(),
-        SizedBox(
-          height: 20,
-        ),
-        RestaurantCard(),
-        SizedBox(
-          height: 20,
-        ),
-        RestaurantCard(),
-        SizedBox(
-          height: 20,
-        )
+        const RestaurantCard(),
+        const RestaurantCard(),
+        const RestaurantCard(),
+        const RestaurantCard(),
       ],
     );
   }

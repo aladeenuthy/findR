@@ -4,6 +4,8 @@
         android:label="restaurant_finder"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCk8mxRi4Z3zAcuvOhJQlwk4ZjBe98y3wk"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

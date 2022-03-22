@@ -14,6 +14,8 @@ ThemeData lightTheme() {
           headline5: ThemeData.light().textTheme.headline3!.copyWith(
                 fontSize: 24, 
               ),
+          headline6: const TextStyle(
+            fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
           bodyText1: ThemeData.light().textTheme.bodyText1!.copyWith(
                 color: textColor,
                 fontSize: 20,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_finder/constants.dart';
+import 'package:restaurant_finder/screens/home/components/restaurant.dart';
 class SearchRestaurant extends StatefulWidget {
   const SearchRestaurant({ Key? key }) : super(key: key);
 
@@ -34,6 +35,8 @@ class _SearchRestaurantState extends State<SearchRestaurant> {
                 : const Icon(Icons.search)),
         onSubmitted: _search,
       ),
+      const SizedBox(height: 50,),
+      const RestaurantCard()
     ]);
   }
 }

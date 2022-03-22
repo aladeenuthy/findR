@@ -1,22 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 class Profile extends StatelessWidget {
-  const Profile({ Key? key }) : super(key: key);
+  const Profile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: mediaQuery.height * 0.10),
-        const CircleAvatar(
-          radius: 68,
-          backgroundImage: AssetImage('assets/images/armor1.jpg'),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
         Text(
-          "Aladeen",
+          FirebaseAuth.instance.currentUser?.displayName as String,
           style: Theme.of(context).textTheme.headline4,
         ),
         const SizedBox(
@@ -34,9 +30,16 @@ class Profile extends StatelessWidget {
             const SizedBox(
               width: 5,
             ),
-            Switch(value: true, onChanged: (value) {})
+            Switch(value: true, onChanged: (value) {}),
+            
           ],
-        )
+        ),
+        const SizedBox(height: 30,),
+        ElevatedButton(
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+            },
+            child: const Text("Log out"))
       ],
     );
   }
