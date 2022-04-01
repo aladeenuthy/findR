@@ -1,8 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:restaurant_finder/models/data.dart';
 import 'package:restaurant_finder/screens/view%20restaurant/view_restaurant.dart';
 
 class RestaurantCard extends StatelessWidget {
-  const RestaurantCard({Key? key}) : super(key: key);
+  final Restaurant restaurant;
+  const RestaurantCard({Key? key, required this.restaurant}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +13,7 @@ class RestaurantCard extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Navigator.of(context).pushNamed(ViewRestaurant.routeName);
+            Navigator.of(context).pushNamed(ViewRestaurant.routeName, arguments: restaurant);
           },
           child: Container(
             width: double.infinity,
@@ -20,14 +23,38 @@ class RestaurantCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
             child: Row(children: [
-              Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: const DecorationImage(
-                        image: AssetImage('assets/images/armor1.jpg'),
-                        fit: BoxFit.cover)),
+              CachedNetworkImage(
+                imageUrl: restaurant.fullImageUrl,
+                errorWidget: (context, _, s) {
+                  return Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.grey),
+                  );
+                  
+                },
+                placeholder: (context, _) {
+                  return Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.grey),
+                  );
+                },
+                imageBuilder: (context, imageProvider) {
+                  return Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                          image: imageProvider, fit: BoxFit.cover),
+                    ),
+                  );
+                },
               ),
               const SizedBox(
                 width: 10,
@@ -36,15 +63,20 @@ class RestaurantCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                      child: Text("Upnormal cafe",
+                      child: Text(
+                          restaurant.name.length > 20
+                              ? restaurant.name.substring(0, 20) + "..."
+                              : restaurant.name,
                           style: Theme.of(context).textTheme.headline6)),
                   Row(
-                    children: const [
-                      Icon(Icons.location_on),
-                      SizedBox(
+                    children: [
+                      const Icon(Icons.location_on),
+                      const SizedBox(
                         width: 2,
                       ),
-                      Text("abuja")
+                      Text(restaurant.vicinity.length > 25
+                          ? restaurant.vicinity.substring(0, 25) + "..."
+                          : restaurant.vicinity)
                     ],
                   )
                 ],

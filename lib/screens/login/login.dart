@@ -14,7 +14,6 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool _obscureText = true;
-  var _authData = {};
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -75,7 +74,6 @@ class _LoginState extends State<Login> {
         bottomNav: false,
         body: Column(
           children: [
-            SizedBox(height: mediaQuery.height * 0.10),
             SizedBox(
               height: mediaQuery.height * 0.85,
               child: LayoutBuilder(builder: (context, constraints) {

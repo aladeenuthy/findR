@@ -4,17 +4,18 @@ import 'package:restaurant_finder/screens/home/home.dart';
 import 'package:restaurant_finder/screens/profile/profile.dart';
 import 'package:restaurant_finder/screens/search/search_restaurant.dart';
 
+
 class Base extends StatefulWidget {
   final Widget? body;
   final bool backButton;
   final bool bottomNav;
-  final String appBarTitle;
-  const Base(
+  static const routeName = '/base';
+  Base(
       {Key? key,
       this.body,
       this.backButton = false,
       this.bottomNav = true,
-      this.appBarTitle = ''})
+      })
       : super(key: key);
 
   @override
@@ -23,11 +24,8 @@ class Base extends StatefulWidget {
 
 class _BaseState extends State<Base> {
   var _currentIndex = 0;
-  final List<Widget> _screens = const [
-    Home(),
-    SearchRestaurant(),
-    Profile()
-  ];
+  final List<Widget> _screens = const [Home(), SearchRestaurant(), Profile()];
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
@@ -52,8 +50,6 @@ class _BaseState extends State<Base> {
                         Navigator.of(context).pop();
                       },
                     ),
-                    title: Text(widget.appBarTitle),
-                    centerTitle: true,
                   ),
                 ),
               )
@@ -70,9 +66,18 @@ class _BaseState extends State<Base> {
                       image: AssetImage('assets/images/map.png'),
                       fit: BoxFit.cover)),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: SizedBox(width: double.infinity, child: widget.body ?? _screens[_currentIndex]),
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: mediaQuery.height * 0.10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: SizedBox(
+                            width: double.infinity,
+                            child: widget.body ?? _screens[_currentIndex]),
+                  ),
+                ],
+              ),
             )
           ],
         ),
@@ -90,9 +95,9 @@ class _BaseState extends State<Base> {
                 },
                 currentIndex: _currentIndex,
                 items: const [
-                    BottomNavigationBarItem(icon: Icon(Icons.home), label: '.'),
+                    BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
                     BottomNavigationBarItem(
-                        icon: Icon(Icons.search), label: '.'),
+                        icon: Icon(Icons.search), label: ''),
                     BottomNavigationBarItem(icon: Icon(Icons.person), label: '')
                   ])
             : null,
