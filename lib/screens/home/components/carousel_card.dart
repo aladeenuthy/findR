@@ -32,6 +32,7 @@ class CarousalCard extends StatelessWidget {
         },
         errorWidget: (context, _, s) {
           return Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               decoration: BoxDecoration(
                   color: Colors.grey, borderRadius: BorderRadius.circular(20)),
               width: double.infinity,
