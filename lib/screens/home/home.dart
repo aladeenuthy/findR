@@ -16,17 +16,17 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late Future _future;
-
+  // to fire up future builder again
   void restart() {
     setState(() {
-      _future = Provider.of<Place>(context, listen: false).fetchNearbyRestos();
+      _future = context.read<Place>().fetchNearbyRestos();
     });
   }
 
   @override
   void initState() {
     super.initState();
-    _future = Provider.of<Place>(context, listen: false).fetchNearbyRestos();
+    _future = context.read<Place>().fetchNearbyRestos();
   }
 
   @override

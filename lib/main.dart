@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return Provider(
       create: (_) => Place(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return  Base();
+                return const Base();
               } else {
                 return const Login();
               }

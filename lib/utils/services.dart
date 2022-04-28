@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:restaurant_finder/constants.dart';
@@ -48,7 +47,7 @@ Future<bool> isConnectedToInternet() async {
   }
   return false;
 }
-
+//convert to miles
 double calculateDistance(lat1, lon1, lat2, lon2) {
   var p = 0.017453292519943295;
   var c = cos;

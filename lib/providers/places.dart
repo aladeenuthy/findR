@@ -1,12 +1,10 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:restaurant_finder/models/data.dart';
 import 'package:restaurant_finder/utils/services.dart';
 
-class Place with ChangeNotifier {
+class Place  {
   static const googleApiKey = "AIzaSyCk8mxRi4Z3zAcuvOhJQlwk4ZjBe98y3wk";
   LatLng? _userLocation;
   NearbyResto? _nearbyResto;

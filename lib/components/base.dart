@@ -10,7 +10,7 @@ class Base extends StatefulWidget {
   final bool backButton;
   final bool bottomNav;
   static const routeName = '/base';
-  Base(
+  const Base(
       {Key? key,
       this.body,
       this.backButton = false,
@@ -31,6 +31,7 @@ class _BaseState extends State<Base> {
     final mediaQuery = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
+        
         appBar: widget.backButton
             ? PreferredSize(
                 preferredSize: Size(0, mediaQuery.height * 0.10),
@@ -67,21 +68,25 @@ class _BaseState extends State<Base> {
                       fit: BoxFit.cover)),
             ),
             SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: mediaQuery.height * 0.10),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: SizedBox(
-                            width: double.infinity,
-                            child: widget.body ?? _screens[_currentIndex]),
-                  ),
-                ],
+              child: Container(
+                padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: Column(
+                  children: [
+                    SizedBox(height: mediaQuery.height * 0.10),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: SizedBox(
+                              width: double.infinity,
+                              child: widget.body ?? _screens[_currentIndex]),
+                    ),
+                  ],
+                ),
               ),
             )
           ],
         ),
         extendBody: true,
+        
         bottomNavigationBar: widget.bottomNav
             ? BottomNavigationBar(
                 showSelectedLabels: false,

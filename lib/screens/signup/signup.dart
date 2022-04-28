@@ -74,8 +74,8 @@ class _SignupState extends State<Signup> {
 
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -87,7 +87,7 @@ class _SignupState extends State<Signup> {
         body: Column(
           children: [
             SizedBox(
-              height: (mediaQuery.height * 0.85) + 100,
+              height: (mediaQuery.height * 0.85) ,
               child: LayoutBuilder(builder: (context, constraints) {
                 return Form(
                   key: _formKey,
@@ -156,9 +156,7 @@ class _SignupState extends State<Signup> {
                           )
                         ],
                       ),
-                      SizedBox(
-                        height: constraints.maxHeight * 0.19,
-                      ),
+                    const Spacer(),
                       Center(
                         child: TextButton(
                           child: const Text("Login instead?"),

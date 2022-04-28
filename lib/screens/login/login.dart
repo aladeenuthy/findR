@@ -62,9 +62,9 @@ class _LoginState extends State<Login> {
 
   @override
   void dispose() {
-    super.dispose();
     _passwordController.dispose();
     _emailController.dispose();
+    super.dispose();
   }
 
   @override
@@ -74,7 +74,9 @@ class _LoginState extends State<Login> {
         bottomNav: false,
         body: Column(
           children: [
-            SizedBox(
+            Container(
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
               height: mediaQuery.height * 0.85,
               child: LayoutBuilder(builder: (context, constraints) {
                 return Column(

@@ -7,17 +7,21 @@ class ReviewContainer extends StatelessWidget {
 
   List<Widget> _buldRatings() {
     List<Widget> ratings = [];
-    List ratingList = rating.toString().split(".");
+    List ratingList = rating.toString().split("."); // eg 2.5 split 2  5
     for (int i = 1; i <= 5; i++) {
+      
       if (i <= int.parse(ratingList[0])) {
+        // if i <= 2 add a full star
         ratings.add(
           const Icon(Icons.star, color: Colors.amber),
         );
       } else if (int.parse(ratingList[1]) != 0) {
+        // else if 5 != 0 add a  half  star & also mean s loop is done with 2
         ratings.add(
           const Icon(Icons.star_half, color: Colors.amber),
         );
       } else {
+        // else add an empty star
         ratings.add(
           const Icon(Icons.star_outline, color: Colors.amber),
         );
@@ -49,7 +53,7 @@ class ReviewContainer extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Text( int.parse(distance) > 1? distance + " miles away": distance +  " mile away",
+            Text( int.parse(distance) > 1 ? distance + " miles away": distance +  " mile away",
                 style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(
               height: 10,

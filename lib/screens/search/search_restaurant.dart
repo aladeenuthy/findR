@@ -25,8 +25,7 @@ class _SearchRestaurantState extends State<SearchRestaurant> {
       isLoading = true;
     });
     try{
-      searchResult = await Provider.of<Place>(context, listen: false)
-        .searchPlace(_controller.text.trim());
+      searchResult = await context.read<Place>().searchPlace(_controller.text.trim());
     setState(() {
       isLoading = false;
     });
@@ -44,8 +43,8 @@ class _SearchRestaurantState extends State<SearchRestaurant> {
   }
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {
