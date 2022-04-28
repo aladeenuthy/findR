@@ -6,4 +6,4 @@
 ![Alt text](assets/screenshots/view_resto2.jpeg?raw=true "")
 ![Alt text](assets/screenshots/view_resto3.jpeg?raw=true "")
 ![Alt text](assets/screenshots/search.jpeg?raw=true "")
-![Alt text](assets/screenshots/error_screen.jpeg?raw=true "")
+![Alt text](assets/screenshots/error_page.jpeg?raw=true "")
